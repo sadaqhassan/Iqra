@@ -1,5 +1,22 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Google authentication
+
+This project uses NextAuth (Auth.js) with Google OAuth only. It does not use a
+database or email/password authentication.
+
+1. Create OAuth credentials in the [Google Cloud Console](https://console.cloud.google.com/apis/credentials).
+2. Add `http://localhost:3000/api/auth/callback/google` as an authorized redirect URI for the OAuth client.
+3. Copy `.env.example` to `.env.local`, then set `AUTH_GOOGLE_ID` and
+   `AUTH_GOOGLE_SECRET` to the credentials from Google.
+4. Set `AUTH_SECRET` to a generated secret. You can generate one with
+   `npx auth secret`.
+5. Start the app with `npm run dev` and open `/login`.
+
+For production, configure the same environment variables in the hosting
+provider and add `https://<your-domain>/api/auth/callback/google` as an
+authorized redirect URI in Google Cloud Console.
+
 ## Getting Started
 
 First, run the development server:
